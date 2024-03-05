@@ -70,7 +70,14 @@ class Posts extends Controller
     {
         parent::create_onSave($context);
 
-        return \Backend::redirect('testauthor/testplugin2/posts?id_sect=' . (int) $_GET['id_sect'] );
+        return \Backend::redirect('testauthor/testplugin2/posts?id_sect=' . post('Post[id_sect]') );
+    }
+
+    public function update_onSave($recordId = null, $context = null)
+    {
+        parent::update_onSave($recordId, $context);
+
+        return \Backend::redirect('testauthor/testplugin2/posts?id_sect=' . post('Post[id_sect]') );
     }
     
 }

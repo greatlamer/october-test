@@ -35,13 +35,17 @@ class Sects extends Controller
 
     public function create_onSave($context = null){
 
+        parent::create_onSave($context);
+
+
         \Mail::later(1, 'backend::mail.newsect', [], function($message) {
 
             $message->to('hicawi1240@mcuma.com', 'Admin Person');
             $message->subject('This is a notify');
         
-        });
-        
+
+        return \Backend::redirect('testauthor/testplugin2/sects');
+
 
     }
 }
