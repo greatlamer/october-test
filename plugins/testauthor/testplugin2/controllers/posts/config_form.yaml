@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Post
+
+# Model Form Field configuration
+form: $/testauthor/testplugin2/models/post/fields.yaml
+
+# Model Class name
+modelClass: TestAuthor\TestPlugin2\Models\Post
+
+# Default redirect location
+defaultRedirect: testauthor/testplugin2/posts
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: testauthor/testplugin2/posts/update/:id
+    redirectClose: testauthor/testplugin2/posts
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: testauthor/testplugin2/posts
+    redirectClose: testauthor/testplugin2/posts
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

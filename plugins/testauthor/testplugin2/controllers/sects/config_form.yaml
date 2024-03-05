@@ -1,0 +1,33 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Sect
+
+# Model Form Field configuration
+form: $/testauthor/testplugin2/models/sect/fields.yaml
+
+# Model Class name
+modelClass: TestAuthor\TestPlugin2\Models\Sect
+
+# Default redirect location
+defaultRedirect: testauthor/testplugin2/sects
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: testauthor/testplugin2/sects/update/:id
+    redirectClose: testauthor/testplugin2/sects
+    flashSave: Почта будет отправлена!
+
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: testauthor/testplugin2/sects
+    redirectClose: testauthor/testplugin2/sects
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

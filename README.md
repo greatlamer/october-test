@@ -1,3 +1,17 @@
+## Что сделано
+- версия cms взята отсюда https://codeload.github.com/octobercms/october/zip/refs/tags/v1.1.12
+- созданы модели Sect, Post
+- созданы контроллеры Sects, Posts (/backend/testauthor/testplugin2/sects, /backend/testauthor/testplugin2/posts)
+- реализована фильтрация Primary tabs
+- не используется стандартный фильтр
+- отложенная отправка письма при создании новой Sect
+PS:
+- при находении на вкладке Posts - при добавлении поста автоподставляется Sect исходя из текущей локации
+- при удалении поста - реактивно остаемся на выбранной Sect
+- при создании поста (а так же при отмене создания) - возвращаемся на прошлый Sect
+- внесены правки  чтобы работала сортировка по полям с учетом выбранной в данный момент Sect
+
+
 <p align="center">
     <img src="https://github.com/octobercms/october/blob/develop/themes/demo/assets/images/october.png?raw=true" alt="October" width="25%" height="25%" />
 </p>

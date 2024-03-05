@@ -1,0 +1,117 @@
+<div data-control="toolbar">
+    <a
+        id="newPostId"
+        href="<?= Backend::url('testauthor/testplugin2/posts/create') ?>"
+        data-base-url="<?= Backend::url('testauthor/testplugin2/posts/create') ?>"
+        class="btn btn-primary oc-icon-plus">
+        New Post
+    </a>
+
+    <button
+        id="delPostId"
+        class="btn btn-danger oc-icon-trash-o"
+        disabled="disabled"
+        onclick="$(this).data('request-data', { checked: $('.control-list').listWidget('getChecked'), id_sect: cur_param_id_sect})"
+        data-request="onDelete"
+        data-request-confirm="Are you sure you want to delete the selected Posts?"
+        data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-request-success="$(this).prop('disabled', 'disabled')"
+        data-stripe-load-indicator>
+        Delete selected
+    </button>
+</div>
+
+<br><br>
+
+
+
+<div class="control-tabs primary-tabs" data-control="tab">
+    <ul class="nav nav-tabs">
+        <?$i=0; foreach($this->sects as $id => $title):?>
+            <li
+                <?if((isset($_GET['id_sect'])&&$_GET['id_sect']==$id )|| ($i === 0 && !isset($_GET['id_sect'])) ):?>
+                    class="active"
+                <?endif;?>
+                <?$i++;?>
+            ><a href="#primaryTab<?=$i?>" class="js-custom-check-tab" data-id="<?=$i?> "><?=$title?></a></li>
+        <?endforeach;?>
+    </ul>
+    <div class="tab-content">
+
+        <div class="tab-pane active">
+            <div id="result">
+                 <?= $this->makePartial('calcresult') ?>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<div</div>
+<script>
+    let cur_param_id_sect = null
+    document.addEventListener("DOMContentLoaded", function(event) { 
+
+        const tabs = document.querySelectorAll('.js-custom-check-tab')
+
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].addEventListener("click", async function() {
+                const id_sect = tabs[i].getAttribute('data-id')
+
+                cur_param_id_sect = id_sect
+
+                await $.request('onTest', {
+
+                    data: {
+                        id_sect
+                    },
+
+
+
+                    update: { calcresult: '#result' },
+
+
+                    
+                });
+
+
+                const ths = document.querySelectorAll('.table.data th a')
+
+                for (let th = 0; th < ths.length; th++) {
+                    if(!ths[th].getAttribute('data-request-data')){
+                        continue;
+                    }
+                    const newval = ths[th].getAttribute('data-request-data') + ',id_sect: ' + id_sect
+                    ths[th].setAttribute('data-request-data', newval)
+                }
+
+
+
+                const add = document.querySelector('#newPostId')
+                if(add){
+                    const newval = add.getAttribute('data-base-url') + '?id_sect=' + cur_param_id_sect
+                    add.setAttribute('href', newval)
+
+                }
+
+
+
+            });
+
+        }
+        if(tabs.length){
+            const activetab = document.querySelector('li.active .js-custom-check-tab')
+            if(activetab){
+                activetab.click()
+            }
+            
+        }
+
+        
+    });
+</script>

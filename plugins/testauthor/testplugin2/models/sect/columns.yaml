@@ -1,0 +1,15 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: ID
+        searchable: true
+    title:
+        label: Наименование
+    visible:
+        label: Видимость
+        type: switch
+    rank:
+        label: Рейтинг

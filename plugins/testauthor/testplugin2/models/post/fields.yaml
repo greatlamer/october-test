@@ -1,0 +1,22 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+    id_sect:
+        label: Категория
+        type: dropdown
+        defaultFrom: idSectDefault
+
+    author:
+        label: Автор
+    content:
+        label: Комментарий
+        type: textarea
+    visible:
+        label: Видимость
+        type: checkbox
+        default: true
