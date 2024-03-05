@@ -42,6 +42,8 @@ class Sects extends Controller
 
             $message->to('hicawi1240@mcuma.com', 'Admin Person');
             $message->subject('This is a notify');
+
+        });
         
 
         return \Backend::redirect('testauthor/testplugin2/sects');
